@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CashierController;
 use App\Http\Controllers\DisplayController;
 use App\Http\Controllers\DoctorController;
@@ -25,9 +26,21 @@ Route::get('/dashboard', function () {
         return redirect()->route('doctor.dashboard');
     } elseif ($user->role === 'cashier') {
         return redirect()->route('cashier.dashboard');
+    } elseif ($user->role === 'admin') {
+        return redirect()->route('admin.dashboard');
     }
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Admin Operations (Auth)
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::post('/doctors', [AdminController::class, 'storeDoctor'])->name('doctors.store');
+    Route::post('/cashiers', [AdminController::class, 'storeCashier'])->name('cashiers.store');
+    Route::post('/staff/{user}/toggle', [AdminController::class, 'toggleStaffStatus'])->name('staff.toggle');
+    Route::post('/sessions', [AdminController::class, 'storeSession'])->name('sessions.store');
+    Route::post('/sessions/{session}/status', [AdminController::class, 'updateSessionStatus'])->name('sessions.status');
+});
 
 // Doctor Operations (Auth)
 Route::middleware(['auth'])->prefix('doctor')->name('doctor.')->group(function () {

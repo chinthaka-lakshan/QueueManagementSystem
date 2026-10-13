@@ -156,7 +156,7 @@ const trackToken = () => {
           <!-- Staff Direct Portal Quick Links -->
           <div class="pt-4 border-t border-slate-200">
             <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Clinic Staff Portals</p>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <Link
                 :href="route('doctor.dashboard')"
                 class="p-3.5 rounded-xl bg-white hover:bg-slate-100/80 border border-slate-200 flex flex-col gap-1 transition group shadow-xs"
@@ -166,7 +166,7 @@ const trackToken = () => {
                   <span class="text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Doctor</span>
                 </div>
                 <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-700">Doctor Console</span>
-                <span class="text-[11px] text-slate-500">Call, skip & complete</span>
+                <span class="text-[11px] text-slate-500">Call & skip</span>
               </Link>
 
               <Link
@@ -178,7 +178,19 @@ const trackToken = () => {
                   <span class="text-[10px] text-amber-700 font-semibold bg-amber-50 px-1.5 py-0.5 rounded">Walk-in</span>
                 </div>
                 <span class="text-xs font-bold text-slate-800 group-hover:text-amber-700">Cashier Desk</span>
-                <span class="text-[11px] text-slate-500">Fast token generation</span>
+                <span class="text-[11px] text-slate-500">Issue tokens</span>
+              </Link>
+
+              <Link
+                :href="route('admin.dashboard')"
+                class="p-3.5 rounded-xl bg-white hover:bg-slate-100/80 border border-slate-200 flex flex-col gap-1 transition group shadow-xs"
+              >
+                <div class="flex items-center justify-between">
+                  <ShieldCheck class="w-4 h-4 text-teal-600" />
+                  <span class="text-[10px] text-teal-700 font-semibold bg-teal-50 px-1.5 py-0.5 rounded">Admin</span>
+                </div>
+                <span class="text-xs font-bold text-slate-800 group-hover:text-teal-700">Admin Panel</span>
+                <span class="text-[11px] text-slate-500">Sessions & docs</span>
               </Link>
 
               <Link
@@ -190,7 +202,7 @@ const trackToken = () => {
                   <span class="text-[10px] text-cyan-700 font-semibold bg-cyan-50 px-1.5 py-0.5 rounded">Display</span>
                 </div>
                 <span class="text-xs font-bold text-slate-800 group-hover:text-cyan-700">Waiting Screen</span>
-                <span class="text-[11px] text-slate-500">Audio call & visual sync</span>
+                <span class="text-[11px] text-slate-500">TV live audio</span>
               </Link>
             </div>
           </div>
@@ -236,8 +248,8 @@ const trackToken = () => {
                     ]"
                   >
                     <div class="flex items-center gap-3.5">
-                      <div class="w-10 h-10 rounded-xl bg-teal-100/70 text-teal-800 flex items-center justify-center font-bold text-xs">
-                        {{ s.room_number || 'R1' }}
+                      <div class="h-10 px-3 rounded-xl bg-teal-50 border border-teal-200 text-teal-800 flex items-center justify-center font-bold text-xs whitespace-nowrap shrink-0 shadow-xs">
+                        {{ s.room_number || 'Room 01' }}
                       </div>
                       <div>
                         <h4 class="text-sm font-bold text-slate-900">{{ s.doctor?.name || 'Doctor' }}</h4>

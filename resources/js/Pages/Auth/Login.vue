@@ -55,6 +55,13 @@ const submit = () => {
                 >
                     Fill Cashier
                 </button>
+                <button
+                    type="button"
+                    @click="form.email = 'admin@clinic.lk'; form.password = 'password'"
+                    class="px-2.5 py-1 rounded-lg bg-slate-800 text-white font-semibold hover:bg-slate-900 transition"
+                >
+                    Fill Admin
+                </button>
             </div>
             <p class="text-[11px] text-slate-500">Default password: <code class="font-mono">password</code></p>
         </div>

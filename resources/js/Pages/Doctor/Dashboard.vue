@@ -16,7 +16,8 @@ import {
   Tv,
   ArrowRight,
   UserX,
-  Play
+  Play,
+  User
 } from 'lucide-vue-next';
 
 const props = defineProps({
@@ -109,6 +110,13 @@ const cancelToken = (token) => {
         </div>
 
         <div class="flex items-center gap-2">
+          <Link
+            :href="route('profile.edit')"
+            class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+            title="Profile & Change Password"
+          >
+            <User class="w-4 h-4 text-slate-600" />
+          </Link>
           <Link
             :href="route('display.index', { session: session?.id })"
             target="_blank"
